@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import * as signalR from "@aspnet/signalr";
 
-export class SignalRAdapter extends ChatAdapter { //implements IChatGroupAdapter {
+export class SignalRAdapter extends ChatAdapter {
   public userId: string;
 
   private hubConnection: signalR.HubConnection
@@ -25,8 +25,6 @@ export class SignalRAdapter extends ChatAdapter { //implements IChatGroupAdapter
     this.hubConnection
       .start()
       .then(() => {
-        console.log('SignalR Connection started');
-
         this.joinRoom();
 
         this.initializeListeners();
@@ -41,9 +39,8 @@ export class SignalRAdapter extends ChatAdapter { //implements IChatGroupAdapter
     });
 
     this.hubConnection.on("messageReceived", (participant, message) => {
-      console.log(participant);
-      console.log(message);
       // Handle the received message to ng-chat
+      console.log(message);
       this.onMessageReceived(participant, message);
     });
 
@@ -80,17 +77,4 @@ export class SignalRAdapter extends ChatAdapter { //implements IChatGroupAdapter
     if (this.hubConnection && this.hubConnection.state == signalR.HubConnectionState.Connected)
       this.hubConnection.send("sendMessage", message);
   }
-
-  // groupCreated(group: Group): void {
-  //     DemoAdapter.mockedParticipants.push(group);
-
-  //     DemoAdapter.mockedParticipants = DemoAdapter.mockedParticipants.sort((first, second) =>
-  //     second.displayName > first.displayName ? -1 : 1
-  //     );
-
-  //     // Trigger update of friends list
-  //     this.listFriends().subscribe(response => {
-  //     this.onFriendsListChanged(response);
-  //     });
-  // }
 }

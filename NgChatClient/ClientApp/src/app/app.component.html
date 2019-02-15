@@ -36,19 +36,22 @@
            [historyEnabled]="true"
            [historyPageSize]="4"
            [hideFriendsList]="false"
+           [theme]="currentTheme"
            (onParticipantClicked)="onEventTriggered('ParticipantClicked triggered')"
            (onParticipantChatOpened)="onEventTriggered('ParticipantChatOpened triggered')"
            (onParticipantChatClosed)="onEventTriggered('ParticipantChatClosed triggered')"
-           (onMessagesSeen)="onEventTriggered('MessageSeen triggered')"
-           [theme]="currentTheme"></ng-chat>
+           (onMessagesSeen)="onEventTriggered('MessageSeen triggered')"></ng-chat>
 
   <!-- SignalR instance -->
   <ng-chat *ngIf="adapter.userId" [adapter]="adapter"
            [userId]="adapter.userId"
            [historyEnabled]="false"
+           [theme]="currentTheme"
+           [fileUploadUrl]="'https://localhost:5001/UploadFile'"
            (onParticipantClicked)="onEventTriggered('ParticipantClicked triggered')"
            (onParticipantChatOpened)="onEventTriggered('ParticipantChatOpened triggered')"
            (onParticipantChatClosed)="onEventTriggered('ParticipantChatClosed triggered')"
-           (onMessagesSeen)="onEventTriggered('MessageSeen triggered')"
-           [theme]="currentTheme"></ng-chat>
+           (onMessagesSeen)="onEventTriggered('MessageSeen triggered')">
+
+  </ng-chat>
 </body>
