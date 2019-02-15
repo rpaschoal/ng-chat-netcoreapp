@@ -22,14 +22,16 @@
         <button type="button" class="btn btn-light" (click)="switchTheme('light-theme')">Light</button>
         <button type="button" class="btn btn-dark" (click)="switchTheme('dark-theme')">Dark</button>
       </div>
+      <div class="col-4">
+        <h6>Join SignalR chat (Open another tab in incognito mode and join as another user to exchange messages):</h6>
+        <button type="button" class="btn" (click)="joinSignalRChatRoom()">Join SignalR Chat Room</button>
+      </div>
     </div>
   </div>
 
-  <ng-chat [adapter]="adapter"
-           [groupAdapter]="adapter"
-           [userId]="999"
-           [historyEnabled]="true"
-           [historyPageSize]="4"
+  <ng-chat *ngIf="adapter && adapter.userId" [adapter]="adapter"
+           [userId]="adapter.userId"
+           [historyEnabled]="false"
            [hideFriendsList]="false"
            (onParticipantClicked)="onEventTriggered('ParticipantClicked triggered')"
            (onParticipantChatOpened)="onEventTriggered('ParticipantChatOpened triggered')"
