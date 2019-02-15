@@ -29,10 +29,23 @@
     </div>
   </div>
 
-  <ng-chat *ngIf="adapter && adapter.userId" [adapter]="adapter"
+  <!-- Offline bot instance -->
+  <ng-chat *ngIf="!adapter.userId" [adapter]="adapter"
+           [groupAdapter]="adapter"
+           [userId]="userId"
+           [historyEnabled]="true"
+           [historyPageSize]="4"
+           [hideFriendsList]="false"
+           (onParticipantClicked)="onEventTriggered('ParticipantClicked triggered')"
+           (onParticipantChatOpened)="onEventTriggered('ParticipantChatOpened triggered')"
+           (onParticipantChatClosed)="onEventTriggered('ParticipantChatClosed triggered')"
+           (onMessagesSeen)="onEventTriggered('MessageSeen triggered')"
+           [theme]="currentTheme"></ng-chat>
+
+  <!-- SignalR instance -->
+  <ng-chat *ngIf="adapter.userId" [adapter]="adapter"
            [userId]="adapter.userId"
            [historyEnabled]="false"
-           [hideFriendsList]="false"
            (onParticipantClicked)="onEventTriggered('ParticipantClicked triggered')"
            (onParticipantChatOpened)="onEventTriggered('ParticipantChatOpened triggered')"
            (onParticipantChatClosed)="onEventTriggered('ParticipantChatClosed triggered')"

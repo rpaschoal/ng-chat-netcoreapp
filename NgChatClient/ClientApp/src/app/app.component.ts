@@ -16,10 +16,10 @@ export class AppComponent {
   currentTheme = 'dark-theme';
   triggeredEvents = [];
 
-  userId: string;
+  userId: string = "offline-demo";
   username: string;
 
-  adapter: ChatAdapter;
+  adapter: ChatAdapter = new DemoAdapter();
 
   switchTheme(theme: string): void {
     this.currentTheme = theme;
@@ -30,7 +30,7 @@ export class AppComponent {
   }
 
   joinSignalRChatRoom(): void {
-    const userName = prompt('Please enter a unique username:');
+    const userName = prompt('Please enter a user name:');
 
     this.adapter = new SignalRAdapter(userName, this.http);
   }
