@@ -13,5 +13,7 @@ namespace NgChatSignalR.Models
         public string Message { get; set; }
         public DateTime? DateSent { get; set; }
         public DateTime? DateSeen { get; set; }
+        public string DownloadUrl { get; set; }
+        public int? FileSizeInBytes { get; set; }
     }
 }

@@ -9,7 +9,7 @@ export class SignalRAdapter extends ChatAdapter {
   public userId: string;
 
   private hubConnection: signalR.HubConnection
-  private serverBaseUrl: string = 'https://localhost:5001/';
+  public static serverBaseUrl: string = 'https://localhost:5001/';
 
   constructor(private username: string, private http: HttpClient) {
     super();
@@ -19,7 +19,7 @@ export class SignalRAdapter extends ChatAdapter {
 
   private initializeConnection(): void {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(`${this.serverBaseUrl}chat`)
+      .withUrl(`${SignalRAdapter.serverBaseUrl}chat`)
       .build();
 
     this.hubConnection
@@ -60,7 +60,7 @@ export class SignalRAdapter extends ChatAdapter {
     // List connected users to show in the friends list
     // Sending the userId from the request body as this is just a demo 
     return this.http
-      .post(`${this.serverBaseUrl}listFriends`, { currentUserId: this.userId })
+      .post(`${SignalRAdapter.serverBaseUrl}listFriends`, { currentUserId: this.userId })
       .pipe(
         map((res: any) => res),
         catchError((error: any) => Observable.throw(error.error || 'Server error'))

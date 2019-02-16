@@ -37,7 +37,7 @@ namespace NgChatSignalR
                 builder
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .WithOrigins("https://localhost:44394")
+                    .WithOrigins("https://localhost:5002")
                     .WithOrigins("https://ng-chat.azurewebsites.net")
                     .AllowCredentials();
             }));

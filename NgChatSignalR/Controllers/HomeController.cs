@@ -37,8 +37,8 @@ namespace NgChatSignalR.Controllers
                 }
             }
 
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
+            var baseUri = new Uri($"{Request.Scheme}://{Request.Host}{Request.PathBase}");
+            var fileUri = new Uri(baseUri, $"Uploads/{file.FileName}");
 
             return Ok(new
             {
@@ -48,7 +48,7 @@ namespace NgChatSignalR.Controllers
                 message = file.FileName,
                 mimeType = file.ContentType,
                 fileSizeInBytes = file.Length,
-                downloadUrl =  $"https://localhost:5001/Uploads/{file.FileName}"
+                downloadUrl = fileUri.ToString()
             });
         }
 

@@ -47,7 +47,7 @@
            [userId]="adapter.userId"
            [historyEnabled]="false"
            [theme]="currentTheme"
-           [fileUploadUrl]="'https://localhost:5001/UploadFile'"
+           [fileUploadUrl]="fileUploadUrl"
            (onParticipantClicked)="onEventTriggered('ParticipantClicked triggered')"
            (onParticipantChatOpened)="onEventTriggered('ParticipantChatOpened triggered')"
            (onParticipantChatClosed)="onEventTriggered('ParticipantChatClosed triggered')"
