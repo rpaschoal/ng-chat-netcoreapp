@@ -44,7 +44,7 @@ namespace NgChatSignalR
 
             services
                 .AddSignalR()
-                //.AddAzureSignalR()
+                .AddAzureSignalR()
                 .AddJsonProtocol(options => {
                     options.PayloadSerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
@@ -77,15 +77,10 @@ namespace NgChatSignalR
 
             app.UseCors("CorsPolicy");
 
-            app.UseSignalR(routes =>
+            app.UseAzureSignalR(routes =>
             {
-                routes.MapHub<Chat>("/chat");
+                routes.MapHub<ChatHub>("/chat");
             });
-
-            //app.UseAzureSignalR(routes =>
-            //{
-            //    routes.MapHub<Chat>("/chat");
-            //});
 
             app.UseMvc(routes =>
             {

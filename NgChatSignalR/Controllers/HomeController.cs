@@ -14,14 +14,14 @@ namespace NgChatSignalR.Controllers
     {
         public IActionResult Index()
         {
-            return Content("ng-chat signalr demo running.");
+            return View();
         }
 
         // Sending the userId from the request body as this is just a demo. 
         // On your application you probably want to fetch this from your authentication context and not receive it as a parameter
         public IActionResult ListFriends([FromBody] dynamic payload)
         {
-            return Json(Chat.ConnectedParticipants((string)payload.currentUserId));
+            return Json(ChatHub.ConnectedParticipants((string)payload.currentUserId));
         }
 
         public async Task<IActionResult> UploadFile(IFormFile file, [FromForm(Name = "ng-chat-participant-id")] string userId)

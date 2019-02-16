@@ -22,7 +22,7 @@
         <button type="button" class="btn btn-light" (click)="switchTheme('light-theme')">Light</button>
         <button type="button" class="btn btn-dark" (click)="switchTheme('dark-theme')">Dark</button>
       </div>
-      <div class="col-4">
+      <div class="col-4" *ngIf="!signalRAdapter || (signalRAdapter && !signalRAdapter.userId)">
         <h6>Join SignalR chat (Open another tab in incognito mode and join as another user to exchange messages):</h6>
         <button type="button" class="btn" (click)="joinSignalRChatRoom()">Join SignalR Chat Room</button>
       </div>
@@ -30,7 +30,7 @@
   </div>
 
   <!-- Offline bot instance -->
-  <ng-chat *ngIf="!adapter.userId" [adapter]="adapter"
+  <ng-chat *ngIf="!signalRAdapter || (signalRAdapter && !signalRAdapter.userId)" [adapter]="adapter"
            [groupAdapter]="adapter"
            [userId]="userId"
            [historyEnabled]="true"
@@ -43,8 +43,9 @@
            (onMessagesSeen)="onEventTriggered('MessageSeen triggered')"></ng-chat>
 
   <!-- SignalR instance -->
-  <ng-chat *ngIf="adapter.userId" [adapter]="adapter"
-           [userId]="adapter.userId"
+  <ng-chat *ngIf="signalRAdapter && signalRAdapter.userId"
+           [adapter]="signalRAdapter"
+           [userId]="signalRAdapter.userId"
            [historyEnabled]="false"
            [theme]="currentTheme"
            [fileUploadUrl]="fileUploadUrl"

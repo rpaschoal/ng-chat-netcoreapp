@@ -21,6 +21,7 @@ export class AppComponent {
   username: string;
 
   adapter: ChatAdapter = new DemoAdapter();
+  signalRAdapter: SignalRAdapter;
 
   switchTheme(theme: string): void {
     this.currentTheme = theme;
@@ -33,6 +34,6 @@ export class AppComponent {
   joinSignalRChatRoom(): void {
     const userName = prompt('Please enter a user name:');
 
-    this.adapter = new SignalRAdapter(userName, this.http);
+    this.signalRAdapter = new SignalRAdapter(userName, this.http);
   }
 }
