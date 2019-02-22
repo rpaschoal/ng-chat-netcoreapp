@@ -5,7 +5,7 @@ A demo of ng-chat using ASP.NET core and Azure SignalR. [The published version c
 
 * Clone this repository
 * Create an Azure SignalR resource under your Azure account (The free tier will do just fine for the demo)
-* Add a user secret with your Azure SignalR resource with the following key `Azure:SignalR:ConnectionString` (`dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"`)
+* Add a user secret with your Azure SignalR resource connection string with the following key `Azure:SignalR:ConnectionString` (`dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"`)
 * Open the project solution using Visual Studio 2017 or higher (You can also run them separately without Visual Studio using the dotnet CLI with `dotnet run`)
 * Run both projects in the solution (Make sure you're running it with Kestrel and that the ports are matching with the launch settings)
 * Test joining a room with different browsers (or a incognito window) and exchange messages.
