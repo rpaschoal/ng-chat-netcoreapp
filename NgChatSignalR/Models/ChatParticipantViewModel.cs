@@ -7,7 +7,7 @@ namespace NgChatSignalR.Models
 {
     public class ChatParticipantViewModel
     {
-        public int ParticipantType { get; set; }
+        public ChatParticipantTypeEnum ParticipantType { get; set; }
         public string Id { get; set; }
         public int Status { get; set; }
         public string Avatar { get; set; }
