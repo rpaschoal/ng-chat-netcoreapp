@@ -22,6 +22,11 @@ namespace NgChatSignalR.Controllers
         public IActionResult ListFriends([FromBody] dynamic payload)
         {
             return Json(ChatHub.ConnectedParticipants((string)payload.currentUserId));
+
+            // Use the following for group chats
+            // Make sure you have [pollFriendsList] set to true for this simple group chat example to work as
+            // broadcasting with group was not implemented here
+            // return Json(GroupChatHub.ConnectedParticipants((string)payload.currentUserId));
         }
 
         public async Task<IActionResult> UploadFile(IFormFile file, [FromForm(Name = "ng-chat-participant-id")] string userId)
