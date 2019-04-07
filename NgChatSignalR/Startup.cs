@@ -80,6 +80,7 @@ namespace NgChatSignalR
             app.UseAzureSignalR(routes =>
             {
                 routes.MapHub<ChatHub>("/chat");
+                routes.MapHub<GroupChatHub>("/groupchat");
             });
 
             app.UseMvc(routes =>

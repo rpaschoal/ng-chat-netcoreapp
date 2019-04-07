@@ -45,8 +45,10 @@
   <!-- SignalR instance -->
   <ng-chat *ngIf="signalRAdapter && signalRAdapter.userId"
            [adapter]="signalRAdapter"
+           [groupAdapter]="signalRAdapter"
            [userId]="signalRAdapter.userId"
            [historyEnabled]="false"
+           [pollFriendsList]="true"
            [theme]="currentTheme"
            [fileUploadUrl]="fileUploadUrl"
            (onParticipantClicked)="onEventTriggered('ParticipantClicked triggered')"

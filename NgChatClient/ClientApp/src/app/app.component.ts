@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ChatAdapter } from 'ng-chat';
 import { DemoAdapter } from './demo-adapter';
 import { SignalRAdapter } from './signalr-adapter';
+import { SignalRGroupAdapter } from './signalr-group-adapter';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -21,7 +22,7 @@ export class AppComponent {
   username: string;
 
   adapter: ChatAdapter = new DemoAdapter();
-  signalRAdapter: SignalRAdapter;
+  signalRAdapter: SignalRGroupAdapter;
 
   switchTheme(theme: string): void {
     this.currentTheme = theme;
@@ -34,6 +35,6 @@ export class AppComponent {
   joinSignalRChatRoom(): void {
     const userName = prompt('Please enter a user name:');
 
-    this.signalRAdapter = new SignalRAdapter(userName, this.http);
+    this.signalRAdapter = new SignalRGroupAdapter(userName, this.http);
   }
 }
