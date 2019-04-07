@@ -21,7 +21,7 @@ namespace NgChatSignalR.Controllers
         // On your application you probably want to fetch this from your authentication context and not receive it as a parameter
         public IActionResult ListFriends([FromBody] dynamic payload)
         {
-            return Json(ChatHub.ConnectedParticipants((string)payload.currentUserId));
+            return Json(GroupChatHub.ConnectedParticipants((string)payload.currentUserId));
 
             // Use the following for group chats
             // Make sure you have [pollFriendsList] set to true for this simple group chat example to work as
