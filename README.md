@@ -1,3 +1,5 @@
+# ⚠️ This project has been archived and is no longer maintained
+
 # ng-chat-netcoreapp
 A demo of ng-chat using ASP.NET core and Azure SignalR. [The published version can be found here](https://ng-chat.azurewebsites.net).
 
